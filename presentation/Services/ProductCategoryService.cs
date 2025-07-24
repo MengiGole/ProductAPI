@@ -1,3 +1,4 @@
+using System.Linq;
 using ProductApi.Application.DTOs.ProductCategory;
 using ProductApi.Application.Interfaces;
 using ProductApi.Domain.Interfaces;
@@ -6,29 +7,80 @@ namespace ProductApi.Application.Services
 {
     public class ProductCategoryService : IProductCategoryService
     {
-        public Task<ProductCategoryReadDto> CreateAsync(ProductCategoryCreateDto dto)
+        private readonly IProductCategoryRepository _categoryRepository;
+        public ProductCategoryService(IProductCategoryRepository categoryRepository)
         {
-            throw new System.NotImplementedException();
+            _categoryRepository = categoryRepository;
         }
 
-        public Task<IEnumerable<ProductCategoryReadDto>> GetAllAsync()
+        public async Task<ProductCategoryReadDto> CreateAsync(ProductCategoryCreateDto dto)
         {
-            throw new System.NotImplementedException();
+            var category = new ProductCategory
+            {
+                GroupId = dto.GroupId,
+                Name = dto.Name!,
+                Description = dto.Description,
+                CreatedAt = DateTime.UtcNow
+            };
+            var created = await _categoryRepository.AddAsync(category);
+            return new ProductCategoryReadDto
+            {
+                Id = created.Id,
+                GroupId = created.GroupId,
+                Name = created.Name,
+                Description = created.Description,
+                CreatedAt = created.CreatedAt
+            };
         }
 
-        public Task<ProductCategoryReadDto> GetByIdAsync(int id)
+        public async Task<IEnumerable<ProductCategoryReadDto>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            var categories = await _categoryRepository.GetAllAsync();
+            return categories.Select(c => new ProductCategoryReadDto
+            {
+                Id = c.Id,
+                GroupId = c.GroupId,
+                Name = c.Name,
+                Description = c.Description,
+                CreatedAt = c.CreatedAt
+            });
         }
 
-        public Task<ProductCategoryReadDto> UpdateAsync(int id, ProductCategoryUpdateDto dto)
+        public async Task<ProductCategoryReadDto> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var category = await _categoryRepository.GetByIdAsync(id);
+            if (category == null) return null;
+            return new ProductCategoryReadDto
+            {
+                Id = category.Id,
+                GroupId = category.GroupId,
+                Name = category.Name,
+                Description = category.Description,
+                CreatedAt = category.CreatedAt
+            };
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<ProductCategoryReadDto> UpdateAsync(int id, ProductCategoryUpdateDto dto)
         {
-            throw new System.NotImplementedException();
+            var category = await _categoryRepository.GetByIdAsync(id);
+            if (category == null) return null;
+            category.GroupId = dto.GroupId;
+            category.Name = dto.Name!;
+            category.Description = dto.Description;
+            var updated = await _categoryRepository.UpdateAsync(category);
+            return new ProductCategoryReadDto
+            {
+                Id = updated.Id,
+                GroupId = updated.GroupId,
+                Name = updated.Name,
+                Description = updated.Description,
+                CreatedAt = updated.CreatedAt
+            };
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            return await _categoryRepository.DeleteAsync(id);
         }
     }
 }

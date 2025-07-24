@@ -11,6 +11,7 @@ C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.AssemblyInfoInputs.cache
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.AssemblyInfo.cs
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.sourcelink.json
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\applicat.45FA8C82.Up2Date
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.dll
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\refint\application.dll

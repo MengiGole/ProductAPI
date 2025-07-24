@@ -6,4 +6,5 @@
     public DateTime CreatedAt { get; set; }
 
     public ICollection<ProductCategory> ProductCategories { get; set; }
+    public ICollection<Product> Products { get; set; }
 }

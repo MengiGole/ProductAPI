@@ -3,6 +3,7 @@
     public class ProductUpdateDto
     {
         public int CategoryId { get; set; }
+        public int ProductGroupId { get; set; }
         public string? Name { get; set; }
         public string? SKU { get; set; }
         public decimal Price { get; set; }
