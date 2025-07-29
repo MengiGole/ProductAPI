@@ -20,6 +20,7 @@ namespace ProductApi.Application.Services
             var product = new Product
             {
                 CategoryId = dto.CategoryId,
+                ProductGroupId = dto.ProductGroupId,
                 Name = dto.Name!,
                 SKU = dto.SKU!,
                 // Add other properties as needed
