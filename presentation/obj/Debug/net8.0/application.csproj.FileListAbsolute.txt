@@ -18,6 +18,12 @@ C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\refint\appli
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.pdb
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\application.genruntimeconfig.cache
 C:\Users\DELL\source\repos\productapi\presentation\obj\Debug\net8.0\ref\application.dll
+C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.AssemblyInfo.cs
+C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.sourcelink.json
 C:\Users\DELL\source\repos\productapi - Copy\presentation\bin\Debug\net8.0\application.deps.json
 C:\Users\DELL\source\repos\productapi - Copy\presentation\bin\Debug\net8.0\application.runtimeconfig.json
 C:\Users\DELL\source\repos\productapi - Copy\presentation\bin\Debug\net8.0\application.dll
@@ -26,12 +32,6 @@ C:\Users\DELL\source\repos\productapi - Copy\presentation\bin\Debug\net8.0\domai
 C:\Users\DELL\source\repos\productapi - Copy\presentation\bin\Debug\net8.0\infrastructure.dll
 C:\Users\DELL\source\repos\productapi - Copy\presentation\bin\Debug\net8.0\domain.pdb
 C:\Users\DELL\source\repos\productapi - Copy\presentation\bin\Debug\net8.0\infrastructure.pdb
-C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.csproj.AssemblyReference.cache
-C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.AssemblyInfoInputs.cache
-C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.AssemblyInfo.cs
-C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.csproj.CoreCompileInputs.cache
-C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.sourcelink.json
 C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\applicat.45FA8C82.Up2Date
 C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\application.dll
 C:\Users\DELL\source\repos\productapi - Copy\presentation\obj\Debug\net8.0\refint\application.dll

@@ -1,7 +1,6 @@
-﻿namespace ProductApi.Application.DTOs.User
+﻿namespace ProductApi.Application.DTOs.Auth
 {
-    public class 
-        loginDto
+    public class LoginDto
     {
         public string? Username { get; set; }
         public string? Password { get; set; }
