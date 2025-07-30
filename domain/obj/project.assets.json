@@ -2858,11 +2858,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\productapi\\domain\\domain.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\productapi - Copy\\domain\\domain.csproj",
       "projectName": "domain",
-      "projectPath": "C:\\Users\\DELL\\source\\repos\\productapi\\domain\\domain.csproj",
+      "projectPath": "C:\\Users\\DELL\\source\\repos\\productapi - Copy\\domain\\domain.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\source\\repos\\productapi\\domain\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\source\\repos\\productapi - Copy\\domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
