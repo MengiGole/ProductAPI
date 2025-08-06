@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProductApi.Application.Interfaces;
-using ProductApi.Application.Services;
 using MediatR;
 using System.Reflection;
 
@@ -16,12 +15,7 @@ namespace ProductApi.Application
             // Register AutoMapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             
-            // Register legacy services (for backward compatibility)
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IProductGroupService, ProductGroupService>();
-            services.AddScoped<IProductCategoryService, ProductCategoryService>();
-            services.AddScoped<IProductService, ProductService>();
-            
+            // Removed legacy service registrations (UserService, ProductGroupService, ProductCategoryService, ProductService)
             return services;
         }
     }

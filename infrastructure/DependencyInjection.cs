@@ -2,6 +2,7 @@
 using ProductApi.Domain.Interfaces;
 using ProductApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 
 

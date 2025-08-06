@@ -1,5 +1,7 @@
-﻿using System;
+﻿using infrastructure.Data;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using domain.Entities;
 
 #nullable disable
 

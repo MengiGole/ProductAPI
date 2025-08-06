@@ -2,6 +2,7 @@ using MediatR;
 using ProductApi.Application.Commands.Product;
 using ProductApi.Application.DTOs.Product;
 using ProductApi.Domain.Interfaces;
+using domain.Entities;
 
 namespace ProductApi.Application.Handlers.Product
 {
@@ -16,7 +17,7 @@ namespace ProductApi.Application.Handlers.Product
 
         public async Task<ProductReadDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = new global::Product
+            var product = new domain.Entities.Product  // Use fully qualified name to avoid namespace conflict
             {
                 Name = request.ProductCreateDto.Name,
                 SKU = request.ProductCreateDto.SKU,
@@ -25,10 +26,11 @@ namespace ProductApi.Application.Handlers.Product
             };
 
             var created = await _productRepository.AddAsync(product);
-            return new ProductReadDto 
-            { 
-                Id = created.Id, 
-                Name = created.Name, 
+
+            return new ProductReadDto
+            {
+                Id = created.Id,
+                Name = created.Name,
                 SKU = created.SKU,
                 CategoryId = created.CategoryId,
                 Price = request.ProductCreateDto.Price,
@@ -38,4 +40,4 @@ namespace ProductApi.Application.Handlers.Product
             };
         }
     }
-} 
+}

@@ -1,33 +1,37 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using domain.Entities;
 
-public class AppDbContext : DbContext
+namespace infrastructure.Data
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-    public DbSet<User> Users { get; set; }
-    public DbSet<ProductGroup> ProductGroups { get; set; }
-    public DbSet<ProductCategory> ProductCategories { get; set; }
-    public DbSet<Product> Products { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public class AppDbContext : DbContext
     {
-        modelBuilder.Entity<ProductGroup>()
-            .HasMany(pg => pg.ProductCategories)
-            .WithOne(pc => pc.ProductGroup)
-            .HasForeignKey(pc => pc.GroupId);
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        modelBuilder.Entity<ProductCategory>()
-            .HasMany(pc => pc.Products)
-            .WithOne(p => p.ProductCategory)
-            .HasForeignKey(p => p.CategoryId)
-            .OnDelete(DeleteBehavior.Cascade);
+        public DbSet<User> Users { get; set; }
+        public DbSet<ProductGroup> ProductGroups { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        modelBuilder.Entity<Product>()
-            .HasOne(p => p.ProductGroup)
-            .WithMany(pg => pg.Products)
-            .HasForeignKey(p => p.ProductGroupId)
-            .OnDelete(DeleteBehavior.NoAction);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductGroup>()
+                .HasMany(pg => pg.ProductCategories)
+                .WithOne(pc => pc.ProductGroup)
+                .HasForeignKey(pc => pc.GroupId);
+
+            modelBuilder.Entity<ProductCategory>()
+                .HasMany(pc => pc.Products)
+                .WithOne(p => p.ProductCategory)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.ProductGroup)
+                .WithMany(pg => pg.Products)
+                .HasForeignKey(p => p.ProductGroupId)
+                .OnDelete(DeleteBehavior.NoAction);
+        }
     }
 }

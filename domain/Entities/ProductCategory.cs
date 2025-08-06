@@ -1,11 +1,14 @@
-﻿public class ProductCategory
+﻿namespace domain.Entities
 {
-    public int Id { get; set; }
-    public int GroupId { get; set; }
-    public string Name { get; set; }
-    public string? Description { get; set; }
-    public DateTime CreatedAt { get; set; }
+    public class ProductCategory
+    {
+        public int Id { get; set; }
+        public int GroupId { get; set; }
+        public string Name { get; set; }
+        public string? Description { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-    public ProductGroup ProductGroup { get; set; }
-    public ICollection<Product> Products { get; set; }
+        public ProductGroup? ProductGroup { get; set; }
+        public ICollection<Product> Products { get; set; }
+    }
 }

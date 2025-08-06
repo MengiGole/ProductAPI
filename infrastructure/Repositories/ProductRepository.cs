@@ -1,3 +1,5 @@
+using domain.Entities;
+using infrastructure.Data;
 using ProductApi.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,6 @@
-﻿namespace ProductApi.Domain.Interfaces
+﻿using domain.Entities;
+
+namespace ProductApi.Domain.Interfaces
 {
     public interface IProductGroupRepository
     {

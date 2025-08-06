@@ -1,6 +1,7 @@
-using MediatR;
+﻿using MediatR;
 using ProductApi.Application.Commands.User;
 using ProductApi.Application.DTOs.User;
+using domain.Entities;
 using ProductApi.Domain.Interfaces;
 
 namespace ProductApi.Application.Handlers.User
@@ -17,7 +18,7 @@ namespace ProductApi.Application.Handlers.User
         public async Task<UserReadDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             // Hashing logic omitted for brevity
-            var user = new global::User
+            var user = new domain.Entities.User  // ← Use fully qualified name to avoid namespace conflict
             {
                 Username = request.UserCreateDto.Username,
                 PasswordHash = new byte[0], // TODO: Hash password
@@ -25,7 +26,12 @@ namespace ProductApi.Application.Handlers.User
             };
 
             var created = await _userRepository.AddAsync(user);
-            return new UserReadDto { Id = created.Id, Username = created.Username };
+
+            return new UserReadDto
+            {
+                Id = created.Id,
+                Username = created.Username
+            };
         }
     }
-} 
+}

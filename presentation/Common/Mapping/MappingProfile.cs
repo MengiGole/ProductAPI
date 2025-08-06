@@ -4,6 +4,7 @@ using ProductApi.Application.DTOs.ProductCategory;
 using ProductApi.Application.DTOs.ProductGroup;
 using ProductApi.Application.DTOs.User;
 using ProductApi.Application.DTOs.Auth;
+using domain.Entities;
 
 namespace ProductApi.Application.Common.Mapping
 {
@@ -29,6 +30,7 @@ namespace ProductApi.Application.Common.Mapping
 
             // ProductCategory mappings
             CreateMap<ProductCategory, ProductCategoryReadDto>();
+
             CreateMap<ProductCategoryCreateDto, ProductCategory>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Products, opt => opt.Ignore());
@@ -38,6 +40,7 @@ namespace ProductApi.Application.Common.Mapping
 
             // ProductGroup mappings
             CreateMap<ProductGroup, ProductGroupReadDto>();
+
             CreateMap<ProductGroupCreateDto, ProductGroup>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Products, opt => opt.Ignore());
@@ -47,6 +50,7 @@ namespace ProductApi.Application.Common.Mapping
 
             // User mappings
             CreateMap<User, UserReadDto>();
+
             CreateMap<UserCreateDto, User>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
@@ -65,4 +69,4 @@ namespace ProductApi.Application.Common.Mapping
                 .ForMember(dest => dest.PasswordSalt, opt => opt.Ignore());
         }
     }
-} 
+}
