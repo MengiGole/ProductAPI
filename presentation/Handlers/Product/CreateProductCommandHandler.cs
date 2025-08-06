@@ -1,3 +1,4 @@
+using AutoMapper;
 using MediatR;
 using ProductApi.Application.Commands.Product;
 using ProductApi.Application.DTOs.Product;
@@ -9,35 +10,27 @@ namespace ProductApi.Application.Handlers.Product
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductReadDto>
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public CreateProductCommandHandler(IProductRepository productRepository)
+        public CreateProductCommandHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         public async Task<ProductReadDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = new domain.Entities.Product  // Use fully qualified name to avoid namespace conflict
-            {
-                Name = request.ProductCreateDto.Name,
-                SKU = request.ProductCreateDto.SKU,
-                CategoryId = request.ProductCreateDto.CategoryId,
-                ProductGroupId = request.ProductCreateDto.ProductGroupId
-            };
+            // Map from DTO to Entity
+            var productEntity = _mapper.Map<domain.Entities.Product>(request.ProductCreateDto);
 
-            var created = await _productRepository.AddAsync(product);
 
-            return new ProductReadDto
-            {
-                Id = created.Id,
-                Name = created.Name,
-                SKU = created.SKU,
-                CategoryId = created.CategoryId,
-                Price = request.ProductCreateDto.Price,
-                Stock = request.ProductCreateDto.Stock,
-                Description = request.ProductCreateDto.Description,
-                CreatedAt = DateTime.UtcNow
-            };
+            // Save to database
+            var createdProduct = await _productRepository.AddAsync(productEntity);
+
+            // Map Entity back to ReadDto
+            var productReadDto = _mapper.Map<ProductReadDto>(createdProduct);
+
+            return productReadDto;
         }
     }
 }

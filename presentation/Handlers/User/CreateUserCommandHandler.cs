@@ -1,37 +1,31 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using ProductApi.Application.Commands.User;
 using ProductApi.Application.DTOs.User;
-using domain.Entities;
 using ProductApi.Domain.Interfaces;
+using domain.Entities;  // Keep this as is if your entity namespace is lowercase
 
 namespace ProductApi.Application.Handlers.User
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserReadDto>
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public CreateUserCommandHandler(IUserRepository userRepository)
+        public CreateUserCommandHandler(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public async Task<UserReadDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            // Hashing logic omitted for brevity
-            var user = new domain.Entities.User  // ← Use fully qualified name to avoid namespace conflict
-            {
-                Username = request.UserCreateDto.Username,
-                PasswordHash = new byte[0], // TODO: Hash password
-                PasswordSalt = new byte[0]  // TODO: Generate salt
-            };
+            // Fully qualify User here to avoid 'User is namespace' error
+            var user = _mapper.Map<domain.Entities.User>(request.UserCreateDto);
 
-            var created = await _userRepository.AddAsync(user);
+            var createdUser = await _userRepository.AddAsync(user);
 
-            return new UserReadDto
-            {
-                Id = created.Id,
-                Username = created.Username
-            };
+            return _mapper.Map<UserReadDto>(createdUser);
         }
     }
 }
