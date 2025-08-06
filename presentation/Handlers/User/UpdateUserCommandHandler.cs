@@ -2,16 +2,19 @@ using MediatR;
 using ProductApi.Application.Commands.User;
 using ProductApi.Application.DTOs.User;
 using ProductApi.Domain.Interfaces;
+using AutoMapper;
 
 namespace ProductApi.Application.Handlers.User
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UserReadDto>
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UpdateUserCommandHandler(IUserRepository userRepository)
+        public UpdateUserCommandHandler(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public async Task<UserReadDto> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -19,11 +22,14 @@ namespace ProductApi.Application.Handlers.User
             var user = await _userRepository.GetByIdAsync(request.Id);
             if (user == null) return null;
 
-            user.Username = request.UserUpdateDto.Username;
-            // Password update logic omitted for brevity
+            // Map update DTO onto the existing user entity
+            _mapper.Map(request.UserUpdateDto, user);
+
+            // TODO: Add password update & hashing logic here if applicable
 
             var updated = await _userRepository.UpdateAsync(user);
-            return new UserReadDto { Id = updated.Id, Username = updated.Username };
+
+            return _mapper.Map<UserReadDto>(updated);
         }
     }
-} 
+}
